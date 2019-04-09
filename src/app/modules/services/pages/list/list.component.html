@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-3 mb-5" *ngFor="let service of list;let i = index">
+<div class="row justify-content-center">
+  <div class="col-3 mb-5" *ngFor="let service of list; let i = index">
     <app-service-card
       *ngIf="categories.length > 0"
       [name]="service.name"
@@ -8,4 +8,12 @@
       [id]="service.id"
     ></app-service-card>
   </div>
+
+  <h4 *ngIf="list.length === 0">
+    <fa-icon
+      [icon]="faExclamation"
+      [styles]="{ stroke: 'red' }"
+    ></fa-icon>
+    No se encontraron servicios
+  </h4>
 </div>

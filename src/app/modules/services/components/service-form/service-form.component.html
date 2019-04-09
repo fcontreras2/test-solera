@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Servicio</h5>
+      <h5 class="card-title"> {{ !serviceId ? 'Crear' : 'Editar'}} servicio</h5>
       <div class="form-group">
         <label for="">Nombre</label>
         <input
@@ -58,9 +58,15 @@
         type="submit"
         class="btn btn-outline-success mr-1"
       >
-        Guardar
+        {{ !serviceId ? 'Crear' : 'Guardar'}}
       </button>
-      <button type="button" name="" id="" class="btn btn-outline-danger">
+      <button
+        type="button"
+        name=""
+        id=""
+        class="btn btn-outline-danger"
+        routerLink="/"
+      >
         Cancelar
       </button>
     </div>

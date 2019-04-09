@@ -6,6 +6,6 @@
   </div>
   <div class="card-footer">
     <a [routerLink]="['/form/'+id]" class="card-link">Editar</a>
-    <a href="#" class="card-link">Eliminar</a>
+    <a (click)="openModal()" class="card-link">Eliminar</a>
   </div>
 </div>

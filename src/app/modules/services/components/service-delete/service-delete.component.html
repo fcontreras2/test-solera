@@ -1,0 +1,41 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Eliminar servicio</h5>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    ¿Seguro quiere eliminar el servicio?
+    <p><b>Nombre:</b>{{ name }}</p>
+    <p><b>Categoría:</b>{{ category }}</p>
+    <p><b>Descripción:</b>{{ description }}</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-dismiss="modal"
+      (click)="modalRef.close()"
+    >
+      Cerrar
+    </button>
+    <button [disabled]="isDelete" type="button" class="btn btn-primary" (click)="delete()">
+      <span *ngIf="isDelete">
+        <fa-icon
+          [icon]="faSpinner"
+          [styles]="{ stroke: 'red', color: 'white' }"
+          [spin]="true"
+        ></fa-icon>
+        Eliminando
+      </span>
+      <span *ngIf="!isDelete">Confirmar</span>
+    </button>
+  </div>
+</div>

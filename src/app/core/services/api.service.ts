@@ -40,4 +40,10 @@ export class ApiService {
       ...this.httpOptions
     });
   }
+  
+  delete(url, body = {}, options = {}): Observable<any> {
+    return this.http.delete(environment.apiUrl + url, body, {
+      ...this.httpOptions
+    });
+  }
 }

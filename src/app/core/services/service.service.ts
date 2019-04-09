@@ -112,4 +112,14 @@ export class ServiceService {
       })
     })
   }
+
+  deleteService(serviceId:Number):Observable<IService> {
+    return Observable.create(obs => {
+      this.setLoading(true);
+      this.apiService.delete("services/"+serviceId).subscribe(service => {
+        this.setLoading(false);
+        return obs.next(service);
+      })
+    })
+  }
 }

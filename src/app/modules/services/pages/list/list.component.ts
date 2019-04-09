@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { IService } from "@core/models/service";
 import { ServiceService } from "@core/services/service.service";
-import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
-import { ICategory } from '@core/models/category';
+import { NavigationEnd, ActivatedRoute, Router } from "@angular/router";
+import { ICategory } from "@core/models/category";
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: "app-list",
@@ -11,6 +12,7 @@ import { ICategory } from '@core/models/category';
 })
 export class ListComponent implements OnInit {
   list: IService[];
+  faExclamation = faExclamation;
   categories: ICategory[];
 
   constructor(
@@ -35,19 +37,18 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.serService.categories.subscribe(categories => {
       this.categories = categories;
-    }) 
+    });
 
     this.serService.services.subscribe(services => {
       this.list = services;
     });
-    
+
     this.applyFilter();
   }
 
   private applyFilter() {
-
-    this.route.queryParams.subscribe((params) => {
-      this.serService.getServices(params['filter']);
-    })
+    this.route.queryParams.subscribe(params => {
+      this.serService.getServices(params["filter"]);
+    });
   }
 }
