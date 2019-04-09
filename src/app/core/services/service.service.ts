@@ -88,6 +88,7 @@ export class ServiceService {
       this.apiService.get("categories").subscribe(categories => {
         this.setLoading(false);
         this.localStorage.set("categories", categories);
+        this.setCategories(categories);
         return obs.next(categories);
       });
     });
