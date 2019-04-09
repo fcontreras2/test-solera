@@ -42,7 +42,7 @@ export class ApiService {
   }
   
   delete(url, body = {}, options = {}): Observable<any> {
-    return this.http.delete(environment.apiUrl + url, body, {
+    return this.http.delete(environment.apiUrl + url, {
       ...this.httpOptions
     });
   }

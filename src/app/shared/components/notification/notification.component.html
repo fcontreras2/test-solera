@@ -1,0 +1,8 @@
+<div
+  class="container-notification"
+  *ngIf="(s.notification | async)"
+>
+  <div class="alert alert-success" role="alert">
+    <strong>{{ s.notification | async}}</strong> <a href="#" class="alert-link"></a>
+  </div>
+</div>

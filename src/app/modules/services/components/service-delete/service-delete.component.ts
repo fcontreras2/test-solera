@@ -34,6 +34,7 @@ export class ServiceDeleteComponent implements OnInit {
     this.serServ.deleteService(this.id).subscribe((data) => {
       if (data) {
         setTimeout(() => {
+          this.serServ.setNotification('Se ha eliminado correctamente!');
           this.router.navigate(['/']);
           this.modalRef.close();
         },1500)

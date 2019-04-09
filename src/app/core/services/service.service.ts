@@ -13,6 +13,7 @@ export class ServiceService {
   public services$: BehaviorSubject<IService[]>;
   public filter$: BehaviorSubject<Number>;
   public loading$: BehaviorSubject<Boolean>;
+  public notification$: BehaviorSubject<String>;
 
   constructor(
     private apiService: ApiService,
@@ -22,6 +23,7 @@ export class ServiceService {
     this.services$ = new BehaviorSubject<IService[]>([]);
     this.filter$ = new BehaviorSubject<Number>(null);
     this.loading$ = new BehaviorSubject<Boolean>(false);
+    this.notification$ = new BehaviorSubject<String>(null);
   }
 
   get categories() {
@@ -50,6 +52,17 @@ export class ServiceService {
 
   get loading() {
     return this.loading$.asObservable();
+  }
+
+  setNotification(notification:String) {
+    this.notification$.next(notification);
+    setTimeout(() => {
+      this.notification$.next(null);
+    },2500);
+  }
+
+  get notification() {
+    return this.notification$.asObservable();
   }
 
   setLoading(loading: Boolean) {

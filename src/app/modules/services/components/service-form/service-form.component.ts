@@ -51,12 +51,14 @@ export class ServiceFormComponent implements OnInit {
       if (!this.serviceId) {
         this.serServi.createService(this.form.value).subscribe(service => {
           if (service.id) {
+            this.serServi.setNotification('Se ha creado correctamente el servicio!');
             this.router.navigate(['/']);
           }
         })
       } else {
         this.serServi.updateService(this.form.value,this.serviceId).subscribe(service => {
           if (service.id) {
+            this.serServi.setNotification('Se ha editado correctamente el servicio!');
             this.router.navigate(['/']);
           }
         })

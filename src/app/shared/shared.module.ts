@@ -7,9 +7,10 @@ import { ServiceService } from '@core/services/service.service';
 
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
-  declarations: [LoadingComponent, HeaderComponent],
+  declarations: [LoadingComponent, HeaderComponent, NotificationComponent],
   imports: [
     NgbModule.forRoot(),
     CommonModule,
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     RouterModule,
     FontAwesomeModule,
+    NotificationComponent,
   ],
   providers: [
     ServiceService
