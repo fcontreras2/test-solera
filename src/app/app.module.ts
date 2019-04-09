@@ -7,6 +7,7 @@ import { ApiService } from "@core/services/api.service";
 import { ServiceService } from "@core/services/service.service";
 import { HttpClientModule } from "@angular/common/http";
 import { SharedModule } from "./shared/shared.module";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,8 @@ import { SharedModule } from "./shared/shared.module";
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     SharedModule
   ],
   providers: [ApiService, ServiceService],

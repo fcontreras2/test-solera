@@ -5,7 +5,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceService } from '@core/services/service.service';
 
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -21,7 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoadingComponent,
     HeaderComponent,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     ServiceService

@@ -88,4 +88,14 @@ export class ServiceService {
       this.setLoading(false);
     });
   }
+
+  setService(form:IService):Observable<IService> {
+    return Observable.create(obs => {
+      this.setLoading(true);
+      this.apiService.post("services",form).subscribe(service => {
+        this.setLoading(false);
+        return obs.next(service);
+      })
+    })
+  }
 }

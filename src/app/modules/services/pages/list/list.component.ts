@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IService } from "@core/models/service";
 import { ServiceService } from "@core/services/service.service";
 import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
+import { ICategory } from '@core/models/category';
 
 @Component({
   selector: "app-list",
@@ -10,6 +11,8 @@ import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   list: IService[];
+  categories: ICategory[];
+
   constructor(
     private serService: ServiceService,
     private route: ActivatedRoute,
@@ -30,9 +33,14 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.serService.categories.subscribe(categories => {
+      this.categories = categories;
+    }) 
+
     this.serService.services.subscribe(services => {
       this.list = services;
     });
+    
     this.applyFilter();
   }
 

@@ -1,8 +1,9 @@
 <div class="row">
-  <div class="col-3 mb-5" *ngFor="let service of list">
+  <div class="col-3 mb-5" *ngFor="let service of list;let i = index">
     <app-service-card
+      *ngIf="categories.length > 0"
       [name]="service.name"
-      [category]="service.category"
+      [category]="categories[service.category].title"
       [description]="service.description"
       [id]="service.category"
     ></app-service-card>

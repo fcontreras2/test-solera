@@ -1,40 +1,68 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Servicio</h5>
-    <div class="form-group">
-      <label for="">Nombre</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        class="form-control"
-        placeholder="Nombre del servicio"
-      />
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Servicio</h5>
+      <div class="form-group">
+        <label for="">Nombre</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+          placeholder="Nombre del servicio"
+          formControlName="name"
+          [ngClass]="{
+            'is-valid': !f.name.errors,
+            'is-invalid': submitted && f.name.errors
+          }"
+        />
+      </div>
+      <div class="form-group">
+        <label for="">Descripción</label>
+        <textarea
+          class="form-control"
+          placeholder="Descripción"
+          name="description"
+          id="description"
+          rows="3"
+          formControlName="description"
+          [ngClass]="{
+            'is-valid': !f.description.errors,
+            'is-invalid': submitted && f.description.errors
+          }"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="">Categoría</label>
+        <select
+          class="form-control"
+          name="category"
+          id="category"
+          formControlName="category"
+          [ngClass]="{
+            'is-valid': !f.category.errors,
+            'is-invalid': submitted && f.category.errors
+          }"
+        >
+          <option *ngFor="let category of categories" [value]="category.id">{{
+            category.title
+          }}</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="">Descripción</label>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        class="form-control"
-        placeholder="Descripción"
-      />
+    <div class="card-footer">
+      <button
+        type="button"
+        name=""
+        id=""
+        type="submit"
+        class="btn btn-outline-success mr-1"
+      >
+        Guardar
+      </button>
+      <button type="button" name="" id="" class="btn btn-outline-danger">
+        Cancelar
+      </button>
     </div>
-    <div class="form-group">
-      <label for="">Categoría</label>
-      <select class="form-control" name="category" id="category">
-        <option *ngFor="let category of categories" [value]="category.id">{{category.title}}</option>
-      </select>
-    </div>
-    
   </div>
-  <div class="card-footer">
-    <button type="button" name="" id="" class="btn btn-outline-success mr-1">
-        <fa-icon [icon]="faSave"></fa-icon> Guardar
-    </button>
-    <button type="button" name="" id="" class="btn btn-outline-danger">
-        <fa-icon [icon]="faTimes"></fa-icon> Eliminar
-    </button>
-  </div>
-</div>
+</form>
