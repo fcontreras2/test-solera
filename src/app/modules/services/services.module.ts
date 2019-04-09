@@ -6,6 +6,7 @@ import { ListComponent } from "./pages/list/list.component";
 import { ServicesComponent } from "./services.component";
 import { FormComponent } from "./pages/form/form.component";
 import { ServiceRoutingModule } from "./service-routing.module";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { ServiceRoutingModule } from "./service-routing.module";
     ServicesComponent,
     FormComponent
   ],
-  imports: [CommonModule, ServiceRoutingModule]
+  imports: [CommonModule, ServiceRoutingModule, FontAwesomeModule]
 })
 export class ServicesModule {}

@@ -1,20 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { ApiService } from "@core/services/api.service";
+import { ServiceService } from "@core/services/service.service";
+import { HttpClientModule } from "@angular/common/http";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [ApiService, ServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -11,6 +11,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
+    "paths" : {
+      "@core/*": ["app/core/*"],
+      "@modules/*" : ["app/modules/*"],
+      "@environments/*":["environments/*"]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],

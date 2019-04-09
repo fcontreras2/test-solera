@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategory } from '@core/models/category';
+import { ServiceService } from '@core/services/service.service';
+
+import {
+  faEdit,
+  faSave,
+  faTimes
+} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-service-form',
@@ -7,9 +15,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceFormComponent implements OnInit {
 
-  constructor() { }
+  faEdit = faEdit;
+  faSave = faSave;
+  faTimes = faTimes;
+
+  categories:ICategory[] = [];
+  
+  constructor(
+    private serServi:ServiceService
+  ) { }
 
   ngOnInit() {
+    this.serServi.categories.subscribe(categories => {
+      this.categories = categories;
+    })
   }
 
 }

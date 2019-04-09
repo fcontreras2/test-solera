@@ -1,3 +1,10 @@
-<div class="col-3">
-  <app-service-card></app-service-card>
+<div class="row">
+  <div class="col-3 mb-5" *ngFor="let service of list">
+    <app-service-card
+      [name]="service.name"
+      [category]="service.category"
+      [description]="service.description"
+      [id]="service.category"
+    ></app-service-card>
+  </div>
 </div>
