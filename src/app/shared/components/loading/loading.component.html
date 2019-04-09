@@ -1,3 +1,11 @@
-<p>
-  loading works!
-</p>
+<div
+  class="container-loading d-flex justify-content-center align-items-center"
+  *ngIf="(s.loading | async)"
+>
+  <fa-icon
+    [icon]="faSpinner"
+    size="4x"
+    [styles]="{ stroke: 'red', color: 'white' }"
+    [spin]="true"
+  ></fa-icon>
+</div>

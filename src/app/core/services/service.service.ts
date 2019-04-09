@@ -1,36 +1,34 @@
-import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { ICategory } from '@core/models/category';
-import { IService } from '@core/models/service';
-import { ApiService } from './api.service';
-import { LocalStorageService } from './local-storage.service';
+import { Injectable } from "@angular/core";
+import { Observable, BehaviorSubject } from "rxjs";
+import { ICategory } from "@core/models/category";
+import { IService } from "@core/models/service";
+import { ApiService } from "./api.service";
+import { LocalStorageService } from "./local-storage.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ServiceService {
-
   public categories$: BehaviorSubject<ICategory[]>;
   public services$: BehaviorSubject<IService[]>;
   public filter$: BehaviorSubject<Number>;
-  public loading$: BehaviorSubject<Boolean>
-  
+  public loading$: BehaviorSubject<Boolean>;
+
   constructor(
-    private apiService:ApiService,
-    private localStorage:LocalStorageService
+    private apiService: ApiService,
+    private localStorage: LocalStorageService
   ) {
     this.categories$ = new BehaviorSubject<ICategory[]>([]);
     this.services$ = new BehaviorSubject<IService[]>([]);
     this.filter$ = new BehaviorSubject<Number>(null);
     this.loading$ = new BehaviorSubject<Boolean>(false);
-
   }
 
   get categories() {
     return this.categories$.asObservable();
   }
 
-  setCategories(categories:ICategory[]) {
+  setCategories(categories: ICategory[]) {
     this.categories$.next(categories);
   }
 
@@ -38,7 +36,7 @@ export class ServiceService {
     return this.services$.asObservable();
   }
 
-  setServices(services:IService[]) {
+  setServices(services: IService[]) {
     this.services$.next(services);
   }
 
@@ -46,7 +44,7 @@ export class ServiceService {
     return this.filter$.asObservable();
   }
 
-  setFilter(filter:Number) {
+  setFilter(filter: Number) {
     this.filter$.next(filter);
   }
 
@@ -54,11 +52,17 @@ export class ServiceService {
     return this.loading$.asObservable();
   }
 
-  setLoading(loading:Boolean) {
-    this.loading$.next(loading);
+  setLoading(loading: Boolean) {
+    if (loading) {
+      this.loading$.next(loading);
+    } else {
+      setTimeout(() => {
+        this.loading$.next(loading);
+      }, 1000);
+    }
   }
 
-  allCategories():Observable<ICategory[]> {
+  allCategories(): Observable<ICategory[]> {
     return Observable.create(obs => {
       this.setLoading(true);
       let categories = this.localStorage.get("categories");
@@ -68,21 +72,20 @@ export class ServiceService {
         return obs.next(categories);
       }
 
-      this.apiService.get('categories').subscribe(categories => {
+      this.apiService.get("categories").subscribe(categories => {
         this.setLoading(false);
         this.localStorage.set("categories", categories);
         return obs.next(categories);
-      })
-    })
+      });
+    });
   }
 
-  getServices(filter:Number= null) {
+  getServices(filter: Number = null) {
     this.setLoading(true);
-    let querys = filter ? {category: filter} : null;
-    this.apiService.get('services',  querys).subscribe(services => {
+    let querys = filter ? { category: filter } : null;
+    this.apiService.get("services", querys).subscribe(services => {
       this.setServices(services);
       this.setLoading(false);
-    })
+    });
   }
-
 }
