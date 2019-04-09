@@ -5,7 +5,7 @@
     <p class="card-text">{{ description }}</p>
   </div>
   <div class="card-footer">
-    <a href="#" class="card-link">Editar</a>
+    <a [routerLink]="['/form/'+id]" class="card-link">Editar</a>
     <a href="#" class="card-link">Eliminar</a>
   </div>
 </div>

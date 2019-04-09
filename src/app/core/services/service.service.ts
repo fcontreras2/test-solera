@@ -89,10 +89,24 @@ export class ServiceService {
     });
   }
 
-  setService(form:IService):Observable<IService> {
+  getService(serviceId:Number):Observable<IService> {
+    return this.apiService.get('services/'+serviceId);
+  }
+
+  createService(form:IService):Observable<IService> {
     return Observable.create(obs => {
       this.setLoading(true);
       this.apiService.post("services",form).subscribe(service => {
+        this.setLoading(false);
+        return obs.next(service);
+      })
+    })
+  }
+
+  updateService(form:IService, serviceId:Number):Observable<IService> {
+    return Observable.create(obs => {
+      this.setLoading(true);
+      this.apiService.put("services/"+serviceId,form).subscribe(service => {
         this.setLoading(false);
         return obs.next(service);
       })

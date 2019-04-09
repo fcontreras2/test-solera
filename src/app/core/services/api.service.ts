@@ -34,4 +34,10 @@ export class ApiService {
       ...this.httpOptions
     });
   }
+
+  put(url, body = {}, options = {}): Observable<any> {
+    return this.http.put(environment.apiUrl + url, body, {
+      ...this.httpOptions
+    });
+  }
 }
