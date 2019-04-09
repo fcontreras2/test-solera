@@ -10,7 +10,7 @@ Debes tener instalado las siguientes dependencias en tu equipo
 
 ## Instalación
   1. Clonar el proyecto (Abrir terminal)
-    ``` git clone ```
+    ``` git clone git@github.com:fcontreras2/test-solera.git ```
   2. Instalar dependecias
     ``` npm install ```
   3. Iniciar servidores
